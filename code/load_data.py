@@ -21,6 +21,11 @@ seed = 21
 
 
 def load_data():
+    """
+    Input: None
+    Loads images in from their directories and converts them into a numpy array. Creates labels for each type of image. Splits the data/numpy array into training and testing data.
+    return: X_train, X_valid, Y_train, Y_valid
+    """
     labels = os.listdir(data_dir)
     print(labels)
     assert num_classes == len(labels)
@@ -49,6 +54,11 @@ def load_data():
     return X_train, X_valid, Y_train, Y_valid
 
 def load_resized_data(img_rows, img_cols):
+    """
+    Input: img_rows, img_cols
+    Changes the sizes of all the images so that they all have like sizes.
+    return: X_train, X_valid, Y_train, Y_valid
+    """
     X_train, X_valid, Y_train, Y_valid = load_data()
     # Resize images
     X_train = np.array([cv2.resize(img, (img_rows, img_cols)) for img in X_train])
